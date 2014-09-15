@@ -181,10 +181,12 @@ public class Villager : MonoBehaviour
             var amount = targetInventory.Take(ItemTransferAmount, item);
             Debug.Log(string.Format("Removed {0} x {1} from {2}", amount, item, targetInventory.gameObject.name));
             _inventory.Give(item, amount);
-            _workStart -= WorkTime;
-			
-			var heldItem = Instantiate(Resources.Load("Prefabs/Log") as GameObject, transform.position, Quaternion.identity) as GameObject;
+            
+			var pos = new Vector3(0.1f,0.75f,0);
+			var heldItem = Instantiate(Resources.Load("Prefabs/Villager/Log") as GameObject, transform.position + pos, transform.rotation)  as GameObject;
 			heldItem.transform.parent = transform;
+
+			_workStart -= WorkTime;
         }
         if (_inventory.IsFull)
             _currentTask = WorkTask.Unload;
