@@ -8,8 +8,6 @@ using System.Collections;
 [RequireComponent(typeof(ScrollingText))]
 public class Store : MonoBehaviour
 {
-    public GameObject LogStack;
-    public GameObject IronStack;
 
     private Inventory _inventory;
 
@@ -20,7 +18,7 @@ public class Store : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < _inventory.Slots.Count(); i++)
+        /*for (int i = 0; i < _inventory.Slots.Count(); i++)
         {
             var slot = _inventory.Slots[i];
 
@@ -34,6 +32,6 @@ public class Store : MonoBehaviour
                 case ItemType.Iron:
                     break;
             }
-        }
+        }*/
     }
 }
