@@ -17,6 +17,7 @@ public class Villager : MonoBehaviour
     public float EncumberedSpeed = 50.0f;               // Movement speed when encumbered
     public float RotateSpeed = 10.0f;                   // Character rotate speed
     public float WorkTime = 20.0f;                      // Time (in seconds) it takes for a Work task to be completed
+    public GameObject HeldItem;
 
     private const float WaypointDistance = 0.2f;        // Distance to waypoint before moving to next one
     private const int ItemTransferAmount = 1;           // Number of items to transfer when gathering
@@ -30,6 +31,9 @@ public class Villager : MonoBehaviour
     private GameObject _target;
     private Transform _compass;
     private bool _selected = false;
+    private bool _walking = false;
+
+
     private Projector _selector;
     private Seeker _seeker;
     private ScrollingText _scrollingText;
@@ -37,16 +41,19 @@ public class Villager : MonoBehaviour
     private int _currentWaypoint;
 
     private CharacterController _characterController;
+    private Animator _animator;
     private Inventory _inventory;
     private float _workStart = 0.0f;
     private WorkTask _jobTask;
     private WorkTask _currentTask;
+    
 
     private void Start()
     {
         _seeker = GetComponent<Seeker>();
         _inventory = GetComponent<Inventory>();
         _scrollingText = GetComponent<ScrollingText>();
+        _animator = GetComponent<Animator>();
 
         _compass = transform.Find("Compass");
         _characterController = GetComponent<CharacterController>();
@@ -111,19 +118,29 @@ public class Villager : MonoBehaviour
     private void FixedUpdate()
     {
         if (_path == null)
+        {
+            _animator.SetFloat(Animator.StringToHash("Speed"), 0.0f);
             return;
+        }
+
 
         if (_currentWaypoint >= _path.vectorPath.Count)
+        {
+            _animator.SetFloat(Animator.StringToHash("Speed"), 0.0f);
             return;
+        }
+
 
         var waypoint = _path.vectorPath[_currentWaypoint];
         var direction = (waypoint - transform.position).normalized;
 
         if (IsEncumbered)
-            direction *= EncumberedSpeed * Time.fixedDeltaTime;    
+            direction *= EncumberedSpeed * Time.fixedDeltaTime;
         else
             direction *= MoveSpeed * Time.fixedDeltaTime;
-        
+
+        _animator.SetFloat(Animator.StringToHash("Speed"), direction.magnitude);
+        Debug.Log(direction.magnitude);
         _characterController.SimpleMove(direction);
 
         _compass.LookAt(new Vector3(waypoint.x, transform.position.y, waypoint.z), Vector3.up);
@@ -157,15 +174,25 @@ public class Villager : MonoBehaviour
             var amount = _inventory.TakeAll(out itemType);
             targetInventory.Give(itemType, amount);
         }
-
+        Destroy(this.HeldItem); 
         if (_inventory.IsEmpty)
+        {
             _currentTask = _jobTask;
+            
+        }
+            
     }
     private void Gather()
     {
         // Get the inventory
         var targetInventory = _target.GetComponent<Inventory>();
-        if (targetInventory.TotalItems == 0) return;
+        if (targetInventory.TotalItems == 0)
+        {
+            _animator.SetBool(Animator.StringToHash("IsGathering"), false);
+            return;
+        }
+
+        _animator.SetBool(Animator.StringToHash("IsGathering"), true);
 
         _workStart += Time.deltaTime;
 
@@ -181,15 +208,18 @@ public class Villager : MonoBehaviour
             var amount = targetInventory.Take(ItemTransferAmount, item);
             Debug.Log(string.Format("Removed {0} x {1} from {2}", amount, item, targetInventory.gameObject.name));
             _inventory.Give(item, amount);
-            
-			var pos = new Vector3(0.1f,0.75f,0);
-			var heldItem = Instantiate(Resources.Load("Prefabs/Villager/Log") as GameObject, transform.position + pos, transform.rotation)  as GameObject;
-			heldItem.transform.parent = transform;
 
-			_workStart -= WorkTime;
+            var pos = new Vector3(0.1f, 0.75f, 0);
+            this.HeldItem = Instantiate(Resources.Load("Prefabs/Villager/Log") as GameObject, transform.position + pos, transform.rotation) as GameObject;
+            this.HeldItem.transform.parent = transform;
+
+            _workStart -= WorkTime;
         }
         if (_inventory.IsFull)
+        {
+            _animator.SetBool(Animator.StringToHash("IsGathering"), false);
             _currentTask = WorkTask.Unload;
+        }
     }
 
     private GameObject FindResource()
