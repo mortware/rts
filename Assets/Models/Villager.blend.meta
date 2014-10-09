@@ -35,6 +35,7 @@ ModelImporter:
     100058: //RootNode
     100060: Villager_Controller
     100062: Villager
+    100064: Log_proxy
     400000: Armature
     400002: Chest
     400004: Cube
@@ -67,10 +68,14 @@ ModelImporter:
     400058: //RootNode
     400060: Villager_Controller
     400062: Villager
+    400064: Log_proxy
     2300000: Cube
+    2300002: Log_proxy
     3300000: Cube
+    3300002: Log_proxy
     4300000: Cube
     4300002: Villager
+    4300004: Log_proxy
     7400000: Idle
     7400002: Gather
     7400004: Walk
