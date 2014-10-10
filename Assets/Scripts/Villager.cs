@@ -178,7 +178,7 @@ public class Villager : MonoBehaviour
         if (_inventory.IsEmpty)
         {
             _currentTask = _jobTask;
-            
+            _animator.SetBool(Animator.StringToHash("IsCarrying"), false);
         }
             
     }
@@ -218,6 +218,7 @@ public class Villager : MonoBehaviour
         if (_inventory.IsFull)
         {
             _animator.SetBool(Animator.StringToHash("IsGathering"), false);
+            _animator.SetBool(Animator.StringToHash("IsCarrying"), true);
             _currentTask = WorkTask.Unload;
         }
     }

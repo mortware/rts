@@ -82,6 +82,7 @@ ModelImporter:
     7400006: idle
     7400008: gather
     7400010: walk
+    7400012: carry
     9500000: //RootNode
     13700000: Cube
     13700002: Villager
@@ -114,94 +115,6 @@ ModelImporter:
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/Villager_Controller
-        weight: 1
-      - path: Armature/Villager_Controller/Foot_Controller_L
-        weight: 1
-      - path: Armature/Villager_Controller/Foot_Controller_L/Foot_L
-        weight: 1
-      - path: Armature/Villager_Controller/Foot_Controller_L/Foot_L/Toes_L
-        weight: 1
-      - path: Armature/Villager_Controller/Foot_Controller_R
-        weight: 1
-      - path: Armature/Villager_Controller/Foot_Controller_R/Foot_R
-        weight: 1
-      - path: Armature/Villager_Controller/Foot_Controller_R/Foot_R/Toes_R
-        weight: 1
-      - path: Armature/Villager_Controller/HandIK_R
-        weight: 1
-      - path: Armature/Villager_Controller/Hips
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Neck
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Neck/Head
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Fingers_L
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Fingers_R
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_L
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_L/LowerLeg_L
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_R
-        weight: 1
-      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_R/LowerLeg_R
-        weight: 1
-      - path: Cube
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-    - serializedVersion: 16
-      name: gather
-      takeName: gather
-      firstFrame: 0
-      lastFrame: 40
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
@@ -362,6 +275,186 @@ ModelImporter:
       - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_R/LowerLeg_R
         weight: 1
       - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: gather
+      takeName: gather
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Villager_Controller
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_L
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_L/Foot_L
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_R
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_R/Foot_R
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Villager_Controller/HandIK_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Neck
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Fingers_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Fingers_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Log_proxy
+        weight: 1
+      - path: Villager
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: carry
+      takeName: carry
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Villager_Controller
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_L
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_L/Foot_L
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_R
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_R/Foot_R
+        weight: 1
+      - path: Armature/Villager_Controller/Foot_Controller_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Villager_Controller/HandIK_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Neck
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Fingers_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Fingers_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_R
+        weight: 1
+      - path: Armature/Villager_Controller/Hips/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Log_proxy
+        weight: 1
+      - path: Villager
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
