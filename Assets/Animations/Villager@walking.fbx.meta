@@ -1,0 +1,115 @@
+fileFormatVersion: 2
+guid: 0e4e183dfc321b742a1a1f29c928c9fa
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Armature|Chest
+    100002: Armature|Fingers.L
+    100004: Armature|Fingers.R
+    100006: Armature|Foot.L
+    100008: Armature|Foot.R
+    100010: Armature|Hand.L
+    100012: Armature|Hand.R
+    100014: Armature|Head
+    100016: Armature|Hips
+    100018: Armature|LowerArm.L
+    100020: Armature|LowerArm.R
+    100022: Armature|LowerLeg.L
+    100024: Armature|LowerLeg.R
+    100026: Armature|Neck
+    100028: Armature|Shoulder.L
+    100030: Armature|Shoulder.R
+    100032: Armature|Spine
+    100034: Armature|Thumb.L
+    100036: Armature|Thumb.R
+    100038: Armature|Toes.L
+    100040: Armature|Toes.R
+    100042: Armature|UpperArm.L
+    100044: Armature|UpperArm.R
+    100046: Armature|UpperLeg.L
+    100048: Armature|UpperLeg.R
+    100050: Armature|Villager_Controller
+    100052: //RootNode
+    400000: Armature|Chest
+    400002: Armature|Fingers.L
+    400004: Armature|Fingers.R
+    400006: Armature|Foot.L
+    400008: Armature|Foot.R
+    400010: Armature|Hand.L
+    400012: Armature|Hand.R
+    400014: Armature|Head
+    400016: Armature|Hips
+    400018: Armature|LowerArm.L
+    400020: Armature|LowerArm.R
+    400022: Armature|LowerLeg.L
+    400024: Armature|LowerLeg.R
+    400026: Armature|Neck
+    400028: Armature|Shoulder.L
+    400030: Armature|Shoulder.R
+    400032: Armature|Spine
+    400034: Armature|Thumb.L
+    400036: Armature|Thumb.R
+    400038: Armature|Toes.L
+    400040: Armature|Toes.R
+    400042: Armature|UpperArm.L
+    400044: Armature|UpperArm.R
+    400046: Armature|UpperLeg.L
+    400048: Armature|UpperLeg.R
+    400050: Armature|Villager_Controller
+    400052: //RootNode
+    7400000: mixamo.com
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

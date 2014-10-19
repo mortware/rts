@@ -6,54 +6,43 @@ using UnityEngine;
 using System.Collections;
 using Pathfinding;
 
-[RequireComponent(typeof(Seeker))]
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(MovementController))]
 [RequireComponent(typeof(Inventory))]
 [RequireComponent(typeof(ScrollingText))]
 public class Villager : MonoBehaviour
 {
+    private const int ItemTransferAmount = 1;           // Number of items to transfer when gathering
+
     public Job Job = Job.None;                          // Villager's Job
-    public float MoveSpeed = 100.0f;                    // Default movement speed
-    public float EncumberedSpeed = 50.0f;               // Movement speed when encumbered
-    public float RotateSpeed = 10.0f;                   // Character rotate speed
     public float WorkTime = 20.0f;                      // Time (in seconds) it takes for a Work task to be completed
     public GameObject HeldItem;
+    public float TargetActiveRange = 1.0f;
 
-    private const float WaypointDistance = 0.2f;        // Distance to waypoint before moving to next one
-    private const int ItemTransferAmount = 1;           // Number of items to transfer when gathering
-    private const float TargetActiveRange = 1.0f;       // The minimum range to a target before it can be interacted with
-
-    private bool IsEncumbered
-    {
-        get { return _inventory.HasItems; }
-    }
-
-    private GameObject _target;
     private Transform _compass;
     private bool _selected = false;
     private bool _walking = false;
 
-
     private Projector _selector;
-    private Seeker _seeker;
     private ScrollingText _scrollingText;
-    private Path _path;
-    private int _currentWaypoint;
 
     private CharacterController _characterController;
     private Animator _animator;
+    private MovementController _movementController;
     private Inventory _inventory;
     private float _workStart = 0.0f;
     private WorkTask _jobTask;
     private WorkTask _currentTask;
+
+    
     
 
     private void Start()
     {
-        _seeker = GetComponent<Seeker>();
         _inventory = GetComponent<Inventory>();
         _scrollingText = GetComponent<ScrollingText>();
         _animator = GetComponent<Animator>();
+        _movementController = GetComponent<MovementController>();
 
         _compass = transform.Find("Compass");
         _characterController = GetComponent<CharacterController>();
@@ -65,19 +54,6 @@ public class Villager : MonoBehaviour
             case Job.Miner: _jobTask = WorkTask.Mine; break;
         }
         _currentTask = _jobTask;
-    }
-
-    private void OnPathCompleted(Path p)
-    {
-        if (!p.error)
-        {
-            _path = p;
-            _currentWaypoint = 0;
-        }
-        else
-        {
-            Debug.Log(p.errorLog);
-        }
     }
 
     private void Update()
@@ -99,57 +75,18 @@ public class Villager : MonoBehaviour
                 _currentTask = WorkTask.Unload;
             return;
         }
-
-        // If target has changed since last update, calculate a new path
-        if (target != _target)
+        else
         {
-            _target = target;
-            _path = null;
-            _seeker.StartPath(transform.position, _target.collider.ClosestPointOnBounds(transform.position), OnPathCompleted);
+            _movementController.Target = target;
         }
 
         // If close enough to target
-        if (Vector3.Distance(transform.position, _target.collider.ClosestPointOnBounds(transform.position)) < TargetActiveRange)
+        if (Vector3.Distance(transform.position, _movementController.Target.collider.ClosestPointOnBounds(transform.position)) < TargetActiveRange)
             DoWork();
         else
             _workStart = 0;
     }
-
-    private void FixedUpdate()
-    {
-        if (_path == null)
-        {
-            _animator.SetFloat(Animator.StringToHash("Speed"), 0.0f);
-            return;
-        }
-
-
-        if (_currentWaypoint >= _path.vectorPath.Count)
-        {
-            _animator.SetFloat(Animator.StringToHash("Speed"), 0.0f);
-            return;
-        }
-
-
-        var waypoint = _path.vectorPath[_currentWaypoint];
-        var direction = (waypoint - transform.position).normalized;
-
-        if (IsEncumbered)
-            direction *= EncumberedSpeed * Time.fixedDeltaTime;
-        else
-            direction *= MoveSpeed * Time.fixedDeltaTime;
-
-        _animator.SetFloat(Animator.StringToHash("Speed"), direction.magnitude);
-        Debug.Log(direction.magnitude);
-        _characterController.SimpleMove(direction);
-
-        _compass.LookAt(new Vector3(waypoint.x, transform.position.y, waypoint.z), Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, _compass.rotation, RotateSpeed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, waypoint) < WaypointDistance)
-            _currentWaypoint++;
-    }
-
+    
     private void DoWork()
     {
         switch (_currentTask)
@@ -164,7 +101,7 @@ public class Villager : MonoBehaviour
         _workStart += Time.deltaTime;
 
         // Get the inventory
-        var targetInventory = _target.GetComponent<Inventory>();
+        var targetInventory = _movementController.Target.GetComponent<Inventory>();
 
         // Drop off any items
 
@@ -185,7 +122,7 @@ public class Villager : MonoBehaviour
     private void Gather()
     {
         // Get the inventory
-        var targetInventory = _target.GetComponent<Inventory>();
+        var targetInventory = _movementController.Target.GetComponent<Inventory>();
         if (targetInventory.TotalItems == 0)
         {
             _animator.SetBool(Animator.StringToHash("IsGathering"), false);
@@ -206,13 +143,10 @@ public class Villager : MonoBehaviour
             }
 
             var amount = targetInventory.Take(ItemTransferAmount, item);
-            Debug.Log(string.Format("Removed {0} x {1} from {2}", amount, item, targetInventory.gameObject.name));
             _inventory.Give(item, amount);
 
             var pos = new Vector3(0.1f, 0.75f, 0);
-            this.HeldItem = Instantiate(Resources.Load("Prefabs/Villager/Log") as GameObject, transform.position + pos, transform.rotation) as GameObject;
-            this.HeldItem.transform.parent = transform;
-
+            
             _workStart -= WorkTime;
         }
         if (_inventory.IsFull)
@@ -284,7 +218,7 @@ public class Villager : MonoBehaviour
             slotStart += vspace;
         }
 
-        GUI.Label(new Rect(20, 160, 180, vspace), string.Format("Target: {0}", _target != null ? _target.name : "No target"));
+        GUI.Label(new Rect(20, 160, 180, vspace), string.Format("Target: {0}", _movementController.Target != null ? _movementController.Target.name : "No target"));
         GUI.Label(new Rect(20, 160 + vspace, 180, vspace), string.Format("Task: {0}", _currentTask));
     }
 }
